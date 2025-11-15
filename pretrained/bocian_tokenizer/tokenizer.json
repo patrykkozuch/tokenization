@@ -49,12 +49,73 @@
     "prepend_scheme": "always",
     "split": true
   },
-  "post_processor": null,
+  "post_processor": {
+    "type": "TemplateProcessing",
+    "single": [
+      {
+        "SpecialToken": {
+          "id": "<BOS>",
+          "type_id": 0
+        }
+      },
+      {
+        "Sequence": {
+          "id": "A",
+          "type_id": 0
+        }
+      }
+    ],
+    "pair": [
+      {
+        "SpecialToken": {
+          "id": "<BOS>",
+          "type_id": 0
+        }
+      },
+      {
+        "Sequence": {
+          "id": "A",
+          "type_id": 0
+        }
+      },
+      {
+        "SpecialToken": {
+          "id": "<BOS>",
+          "type_id": 1
+        }
+      },
+      {
+        "Sequence": {
+          "id": "B",
+          "type_id": 1
+        }
+      }
+    ],
+    "special_tokens": {
+      "<BOS>": {
+        "id": "<BOS>",
+        "ids": [
+          1
+        ],
+        "tokens": [
+          "<BOS>"
+        ]
+      }
+    }
+  },
   "decoder": {
-    "type": "Metaspace",
-    "replacement": "▁",
-    "prepend_scheme": "always",
-    "split": true
+    "type": "Sequence",
+    "decoders": [
+      {
+        "type": "Metaspace",
+        "replacement": "▁",
+        "prepend_scheme": "always",
+        "split": true
+      },
+      {
+        "type": "ByteFallback"
+      }
+    ]
   },
   "model": {
     "type": "BPE",
@@ -32065,7 +32126,775 @@
       "▁wargach": 31996,
       "stein": 31997,
       "▁wolny,": 31998,
-      "▁płat": 31999
+      "▁płat": 31999,
+      "▁śmiercią.": 32000,
+      "▁rozpoczyn": 32001,
+      "▁kryła": 32002,
+      "▁młodszych": 32003,
+      "▁zniszczył": 32004,
+      "▁kosztował": 32005,
+      "▁spodziewał,": 32006,
+      "▁okropnym": 32007,
+      "▁chlebie": 32008,
+      "▁siermię": 32009,
+      "▁podawać": 32010,
+      "▁atmosfery": 32011,
+      "▁kogo,": 32012,
+      "▁Age": 32013,
+      "▁Zni": 32014,
+      "ta?": 32015,
+      "nęli.": 32016,
+      "mu.\n": 32017,
+      "▁promy": 32018,
+      "▁odprowadzi": 32019,
+      "▁Stro": 32020,
+      "▁przyjazd": 32021,
+      "▁zawody": 32022,
+      "▁fijoł": 32023,
+      "▁wydany": 32024,
+      "▁pragnę,": 32025,
+      "▁strzeli": 32026,
+      "▁błyszczą": 32027,
+      "▁pęt": 32028,
+      "▁mówiącego": 32029,
+      "▁koszt": 32030,
+      "▁Trzech": 32031,
+      "▁Powóz": 32032,
+      "▁żony.\n": 32033,
+      ".\nOn": 32034,
+      "▁sławne": 32035,
+      "▁żądzę": 32036,
+      "▁przodkowie": 32037,
+      "▁nóż,": 32038,
+      "▁przyłączył": 32039,
+      "▁wolałbym": 32040,
+      "▁sądziłem,": 32041,
+      "▁ułatwić": 32042,
+      "0,": 32043,
+      "usia": 32044,
+      "cim": 32045,
+      "narod": 32046,
+      "▁Pak": 32047,
+      "▁PRZE": 32048,
+      "kur": 32049,
+      "obry": 32050,
+      "▁fara": 32051,
+      "sud": 32052,
+      "▁stracone": 32053,
+      "▁Mogli": 32054,
+      "▁krakowski": 32055,
+      "ciuch": 32056,
+      "▁Maur": 32057,
+      "▁brody": 32058,
+      "▁względami": 32059,
+      "!\n\n\n\n\n\n": 32060,
+      "rek.\n": 32061,
+      "▁znaczy:": 32062,
+      "▁odrzekł,": 32063,
+      "ślone": 32064,
+      "▁miesiące,": 32065,
+      "▁[54]": 32066,
+      "▁wichru": 32067,
+      "▁drap": 32068,
+      "▁obyczaju": 32069,
+      "▁pokaź": 32070,
+      "▁ubogich,": 32071,
+      "▁odmawiać": 32072,
+      "▁miłosnych": 32073,
+      "▁Kassy": 32074,
+      "▁fantastyczne": 32075,
+      "▁kaznodzie": 32076,
+      "▁tamtędy": 32077,
+      "beł": 32078,
+      "▁nazawsze": 32079,
+      "▁zaszu": 32080,
+      "arta": 32081,
+      "▁przeł": 32082,
+      "▁Mü": 32083,
+      "▁Jedź": 32084,
+      "▁Fara": 32085,
+      "▁Zac": 32086,
+      "▁—\nJak": 32087,
+      "▁żadnem": 32088,
+      "▁Szlachet": 32089,
+      "▁Marhol": 32090,
+      "▁wydatki": 32091,
+      "▁duszach": 32092,
+      "▁dobrobyt": 32093,
+      "▁osobę,": 32094,
+      "▁poważnego": 32095,
+      "▁skau": 32096,
+      "▁Dziękuję,": 32097,
+      "STRA": 32098,
+      "▁wspomnień,": 32099,
+      "▁Heleny": 32100,
+      "▁zastanowić": 32101,
+      "▁dopomógł": 32102,
+      "▁opuszczaj": 32103,
+      "▁promieniej": 32104,
+      "▁wychodź": 32105,
+      "▁mistrzem": 32106,
+      "▁jaja": 32107,
+      "stki": 32108,
+      "▁poso": 32109,
+      "▁stany": 32110,
+      "▁odjechać": 32111,
+      "lai": 32112,
+      "▁wiedz": 32113,
+      "toi": 32114,
+      "▁Potę": 32115,
+      "ję!": 32116,
+      "▁dawszy": 32117,
+      "▁Cham": 32118,
+      "▁ostrzy": 32119,
+      "rowaś": 32120,
+      "▁męczyć": 32121,
+      "▁departam": 32122,
+      "▁repor": 32123,
+      "▁ewolu": 32124,
+      ";\nZa": 32125,
+      "▁należeli": 32126,
+      "▁rozmowa,": 32127,
+      "▁posiadaniu": 32128,
+      "▁znaków": 32129,
+      "▁siostra,": 32130,
+      "▁Chodź,": 32131,
+      "▁dobrocią": 32132,
+      "▁wyrobić": 32133,
+      "▁dziedzińca": 32134,
+      "▁słucha,": 32135,
+      "▁żałoby": 32136,
+      "▁mogłem.": 32137,
+      "▁Mongo": 32138,
+      "▁mąki,": 32139,
+      "▁określ": 32140,
+      "▁drgnęła": 32141,
+      "▁budże": 32142,
+      "▁wykształcenie": 32143,
+      "▁obracał": 32144,
+      "▁uzbrojony": 32145,
+      "▁zabezpieczyć": 32146,
+      "▁łajdak": 32147,
+      "▁gminy": 32148,
+      "▁d‘Artagnan": 32149,
+      "▁zniesienia": 32150,
+      "▁tchórzost": 32151,
+      "▁uśmié": 32152,
+      "Raz": 32153,
+      "sne": 32154,
+      "▁Spełni": 32155,
+      "▁splo": 32156,
+      "▁dziki,": 32157,
+      "zują": 32158,
+      "▁łapy": 32159,
+      "▁sługi,": 32160,
+      "▁słowy,": 32161,
+      "brała": 32162,
+      "▁dewo": 32163,
+      "▁wasze,": 32164,
+      "▁wypłak": 32165,
+      "▁robiły": 32166,
+      "▁walczących": 32167,
+      "▁oburzony": 32168,
+      "▁Inflan": 32169,
+      "▁sensa": 32170,
+      "▁szacow": 32171,
+      "▁zdrada": 32172,
+      "▁polityka": 32173,
+      "▁odkrycie": 32174,
+      "▁ochoczo": 32175,
+      "▁cofając": 32176,
+      "▁Młod": 32177,
+      "▁spiż": 32178,
+      "▁wołania": 32179,
+      "▁bezwładnie": 32180,
+      "▁szerokości": 32181,
+      "▁śmieszne": 32182,
+      "▁szczęśliwym,": 32183,
+      "▁stłumionym": 32184,
+      "▁Jedyną": 32185,
+      "▁niełatwo": 32186,
+      "▁tracą": 32187,
+      "\ndo": 32188,
+      "cować": 32189,
+      "hdi,": 32190,
+      "▁wsunęła": 32191,
+      "▁poskoczył": 32192,
+      "▁nienar": 32193,
+      "▁przyniesi": 32194,
+      "▁Now": 32195,
+      "tok": 32196,
+      "▁żyjesz": 32197,
+      "▁cieśni": 32198,
+      "▁druz": 32199,
+      "▁tabu": 32200,
+      "▁młoko": 32201,
+      "▁pięknemi": 32202,
+      "▁wyprowadz": 32203,
+      "▁przyszłą": 32204,
+      "▁uważasz": 32205,
+      "▁pisma,": 32206,
+      "▁dziewczyny.": 32207,
+      "▁surowego": 32208,
+      "▁założenia": 32209,
+      "▁zwróciłem": 32210,
+      "▁faktem": 32211,
+      "▁wystarczyło": 32212,
+      "▁treści,": 32213,
+      "▁otaczają": 32214,
+      "▁bynajmniej,": 32215,
+      "▁otchłanie": 32216,
+      "▁trzęsa": 32217,
+      "▁klejnot": 32218,
+      "▁wyrażenie": 32219,
+      "▁ironicznie": 32220,
+      "▁zaprzyja": 32221,
+      "▁produkt": 32222,
+      "▁zma": 32223,
+      "ton.": 32224,
+      "▁mierzy": 32225,
+      "baw": 32226,
+      "▁którą,": 32227,
+      "▁bezcel": 32228,
+      "▁kusi": 32229,
+      "▁chole": 32230,
+      "▁pani?\n": 32231,
+      "▁Toby": 32232,
+      "eczki,": 32233,
+      "▁młodzi,": 32234,
+      "▁obok,": 32235,
+      "▁Kore": 32236,
+      "▁różnice": 32237,
+      "tello.": 32238,
+      "▁pragnie,": 32239,
+      "rzących": 32240,
+      "▁zauł": 32241,
+      "▁błotem": 32242,
+      "▁pomału": 32243,
+      "▁poruszenie": 32244,
+      "▁papierze": 32245,
+      "▁Boga.\n": 32246,
+      "▁dzwonka": 32247,
+      "▁żądając": 32248,
+      "▁ubrania,": 32249,
+      "▁umiałem": 32250,
+      "▁groźbą": 32251,
+      "▁ciepłą": 32252,
+      "▁pogodę": 32253,
+      "▁zwierzęcia": 32254,
+      "▁uszlachet": 32255,
+      "▁oczekiwanie": 32256,
+      "▁niemieckiej": 32257,
+      "▁scenie,": 32258,
+      "▁zamieszczonych": 32259,
+      "▁nieprzenik": 32260,
+      "▁wygię": 32261,
+      "▁wrzeszcz": 32262,
+      "▁zrzucić": 32263,
+      "stary": 32264,
+      "▁poo": 32265,
+      "▁przeno": 32266,
+      "▁przemij": 32267,
+      "atak": 32268,
+      "▁przystał": 32269,
+      "▁Jéj": 32270,
+      "▁maczu": 32271,
+      "▁Eust": 32272,
+      "▁Świą": 32273,
+      "▁nauki.": 32274,
+      "▁sławie": 32275,
+      "▁umiejąc": 32276,
+      "▁twarzyczka": 32277,
+      "▁opowiadali": 32278,
+      "▁przepięk": 32279,
+      "▁ptaków,": 32280,
+      "▁oszuki": 32281,
+      "▁gałęziach": 32282,
+      "▁przeklęte": 32283,
+      "▁dbać": 32284,
+      "▁omył": 32285,
+      "▁zawiado": 32286,
+      "▁nieświadomo": 32287,
+      "▁kilkakroć": 32288,
+      "▁Bat": 32289,
+      "▁Col": 32290,
+      "▁skokiem": 32291,
+      "zacji": 32292,
+      "▁Koza": 32293,
+      "▁Odda": 32294,
+      "▁polskie,": 32295,
+      "rowały": 32296,
+      "▁niktby": 32297,
+      "▁oburzył": 32298,
+      "▁doskonal": 32299,
+      "gnieniem": 32300,
+      "▁ptak,": 32301,
+      "▁spoglądać": 32302,
+      "▁ufnością": 32303,
+      "▁tryumfu": 32304,
+      "▁przekonawszy": 32305,
+      "▁leśne": 32306,
+      "▁piekieł": 32307,
+      "▁układy": 32308,
+      "▁Gede": 32309,
+      "▁ubóstwo": 32310,
+      "▁gliny": 32311,
+      "▁Pawła,": 32312,
+      "▁Wydało": 32313,
+      "▁widzów": 32314,
+      "▁stolnik": 32315,
+      "▁burżua": 32316,
+      "▁wlazł": 32317,
+      "▁dwie,": 32318,
+      "go.\n": 32319,
+      "leś": 32320,
+      "łom,": 32321,
+      "▁can": 32322,
+      "▁wystrz": 32323,
+      "▁odróżni": 32324,
+      "▁przyjechali": 32325,
+      "▁Wzd": 32326,
+      "▁skowy": 32327,
+      "▁puść": 32328,
+      "▁fig": 32329,
+      "▁ciekaw": 32330,
+      "▁drobne,": 32331,
+      "▁zdolnym": 32332,
+      "▁nudzi": 32333,
+      "▁skromną": 32334,
+      "▁twierdząc,": 32335,
+      "▁osobistości": 32336,
+      "▁okresu": 32337,
+      "▁otaczające": 32338,
+      "▁społecznego": 32339,
+      "▁przewróci": 32340,
+      "▁nosili": 32341,
+      "▁Troi": 32342,
+      "▁zostawał": 32343,
+      "▁właścicielem": 32344,
+      "▁wyżyn": 32345,
+      "▁ojcze!": 32346,
+      "▁teolog": 32347,
+      "▁ukarać": 32348,
+      "▁odziany": 32349,
+      "▁firm": 32350,
+      "▁hełm": 32351,
+      "33": 32352,
+      "opis": 32353,
+      ".\nN": 32354,
+      "▁zamo": 32355,
+      "▁odbieg": 32356,
+      "▁koja": 32357,
+      "▁Ari": 32358,
+      "dul": 32359,
+      "▁powiedzieli,": 32360,
+      "▁(za": 32361,
+      "kowskiego,": 32362,
+      "ziemie": 32363,
+      "▁troszcząc": 32364,
+      "▁powodzeniem": 32365,
+      "▁jeden.": 32366,
+      "▁Marcel": 32367,
+      "▁kompli": 32368,
+      "▁dni.\n": 32369,
+      "▁szepty": 32370,
+      ",\nCi": 32371,
+      "▁niebezpieczny": 32372,
+      "▁poczem,": 32373,
+      "▁chodzić,": 32374,
+      "▁pomysły": 32375,
+      "▁[56]": 32376,
+      "▁usch": 32377,
+      "▁weseli": 32378,
+      "▁iskra": 32379,
+      "▁wciągnąć": 32380,
+      "▁bezwzględ": 32381,
+      "▁ustroju": 32382,
+      "▁itp.": 32383,
+      "▁Wiadomość": 32384,
+      "▁Aleksy": 32385,
+      "▁oświaty": 32386,
+      "▁Połaniecki": 32387,
+      "▁przygniat": 32388,
+      "▁Brzoz": 32389,
+      "DO": 32390,
+      "hn": 32391,
+      "towa": 32392,
+      "niałych": 32393,
+      "szysz": 32394,
+      "▁szej": 32395,
+      "▁Mów,": 32396,
+      "▁Cle": 32397,
+      "▁Dmy": 32398,
+      "▁Poprze": 32399,
+      ":\nK": 32400,
+      "▁chora,": 32401,
+      "▁chłodem": 32402,
+      "▁kochanego": 32403,
+      "▁ścigał": 32404,
+      "▁ciągłego": 32405,
+      "▁świętéj": 32406,
+      "▁zbóż": 32407,
+      "▁wzgór": 32408,
+      "▁uważał,": 32409,
+      "▁biednemu": 32410,
+      "▁pójdę,": 32411,
+      "▁umartwie": 32412,
+      "▁chodził,": 32413,
+      "▁dziedziny": 32414,
+      "▁idziesz": 32415,
+      "▁śpiąc": 32416,
+      "▁urządzenie": 32417,
+      "▁bogatej": 32418,
+      "▁Słysze": 32419,
+      "▁kapitanem": 32420,
+      "▁żałuje": 32421,
+      "▁dziewczynka,": 32422,
+      "▁pozbawił": 32423,
+      "▁wyczytał": 32424,
+      "▁Narodzenia": 32425,
+      "▁wystąpiły": 32426,
+      "EGO": 32427,
+      "jono": 32428,
+      "dzałem": 32429,
+      "roda": 32430,
+      "▁Nieu": 32431,
+      "choć": 32432,
+      "▁czasów.": 32433,
+      "▁ogrz": 32434,
+      "▁zieleń": 32435,
+      "▁dalekiego": 32436,
+      "▁zdarzeń": 32437,
+      "▁Wiedziałem": 32438,
+      "▁wieleb": 32439,
+      "▁rzecz!": 32440,
+      "▁skarby,": 32441,
+      "▁odebra": 32442,
+      "▁Chodziło": 32443,
+      "▁świadczą": 32444,
+      "▁wyjrzał": 32445,
+      "cach.": 32446,
+      "▁umowy": 32447,
+      "▁Mówisz": 32448,
+      "stwie.": 32449,
+      "▁oświadcz": 32450,
+      "▁spisk": 32451,
+      "▁niewinną": 32452,
+      "▁mądrości,": 32453,
+      "▁Kurt": 32454,
+      "▁zdrowa,": 32455,
+      "▁przyglądała": 32456,
+      "▁tabakier": 32457,
+      "▁labiryn": 32458,
+      "▁chrześcja": 32459,
+      "remu": 32460,
+      "éra": 32461,
+      "jecie": 32462,
+      "▁rozgry": 32463,
+      "▁widzieć.": 32464,
+      "▁dziatki": 32465,
+      "▁mięsz": 32466,
+      "▁wagi,": 32467,
+      "▁Moc": 32468,
+      "▁odpowiedniego": 32469,
+      "▁powozie": 32470,
+      "▁uśmiechy": 32471,
+      "▁wiecznych": 32472,
+      "▁poprostu,": 32473,
+      "▁uciekli": 32474,
+      "▁stałego": 32475,
+      "▁3)": 32476,
+      "▁Indyj": 32477,
+      "▁niebieskiej": 32478,
+      "▁wzruszyła": 32479,
+      "▁masła,": 32480,
+      "▁[33": 32481,
+      "▁francuskie": 32482,
+      "▁sprawiedliwie": 32483,
+      "ANA": 32484,
+      "▁żagiel": 32485,
+      "▁nuty": 32486,
+      "▁poszliśmy": 32487,
+      "▁Julja": 32488,
+      "▁dłuższego": 32489,
+      "▁niejednego": 32490,
+      "▁niedźwiedzie": 32491,
+      "▁młode,": 32492,
+      "▁węzły": 32493,
+      "▁Kajet": 32494,
+      "▁dać,": 32495,
+      ".\nCh": 32496,
+      "▁zastaw": 32497,
+      "▁Sad": 32498,
+      "▁Swe": 32499,
+      "▁Tą": 32500,
+      "▁murów,": 32501,
+      "▁już.": 32502,
+      "▁dala": 32503,
+      "fite": 32504,
+      "gu.\n": 32505,
+      "▁śmiech,": 32506,
+      "▁kochania": 32507,
+      "▁zupełnym": 32508,
+      "ralnie": 32509,
+      "▁mecze": 32510,
+      "nionemi": 32511,
+      "▁samoist": 32512,
+      "▁opowiadać,": 32513,
+      "▁wspólnych": 32514,
+      "▁złego.": 32515,
+      "▁opartą": 32516,
+      "▁natchnienie": 32517,
+      "▁sierżan": 32518,
+      "▁zwycięztwa": 32519,
+      "▁karyka": 32520,
+      "▁zagrody": 32521,
+      "▁pieczęć": 32522,
+      "▁dziewcząt,": 32523,
+      "▁tka": 32524,
+      "▁porze,": 32525,
+      "ry!": 32526,
+      "▁jaku": 32527,
+      "▁rozbić": 32528,
+      "▁Ona,": 32529,
+      "▁„bo": 32530,
+      "▁ja.\n": 32531,
+      "▁piszczał": 32532,
+      "owałem,": 32533,
+      "sieur": 32534,
+      "▁on!": 32535,
+      "▁kilku,": 32536,
+      "▁ba!": 32537,
+      "▁karta": 32538,
+      "▁parę,": 32539,
+      "▁hipote": 32540,
+      "▁kryją": 32541,
+      "▁pędzić": 32542,
+      "▁Dziwny": 32543,
+      "ktyw": 32544,
+      "▁[59]": 32545,
+      "▁spoczynek,": 32546,
+      "▁sześćdziesięciu": 32547,
+      "▁błyszczący": 32548,
+      "▁zapachu": 32549,
+      "▁nogami.": 32550,
+      "▁tygodnie,": 32551,
+      "▁sprzedaje": 32552,
+      "▁bitwę": 32553,
+      "▁wicehrabi": 32554,
+      "▁wesół": 32555,
+      "p!": 32556,
+      "▁chlub": 32557,
+      "▁szaty,": 32558,
+      "▁Die": 32559,
+      "▁Poszła": 32560,
+      "▁boso": 32561,
+      "▁mówimy": 32562,
+      "▁Uf": 32563,
+      "▁rewiz": 32564,
+      "stąpili": 32565,
+      "▁moje!": 32566,
+      "a,\nO": 32567,
+      "ującej": 32568,
+      "▁płoną": 32569,
+      "▁córką,": 32570,
+      "▁pytaj": 32571,
+      "▁katu": 32572,
+      "▁zwycięży": 32573,
+      "▁wzruszona": 32574,
+      "tach.\n": 32575,
+      "▁chmurą": 32576,
+      "▁podejm": 32577,
+      "▁nosa,": 32578,
+      "▁winny": 32579,
+      "▁rzadki": 32580,
+      "▁krusz": 32581,
+      "▁odczuł": 32582,
+      "▁poszukać": 32583,
+      "▁śniadania": 32584,
+      "▁kroplami": 32585,
+      "▁zegarek,": 32586,
+      "▁dowiódł": 32587,
+      "▁spuszczonemi": 32588,
+      "▁wąwozu": 32589,
+      "Czemuż": 32590,
+      "fum": 32591,
+      "sna": 32592,
+      "▁postąpiła": 32593,
+      "▁przerobi": 32594,
+      "▁przypie": 32595,
+      "▁Craw": 32596,
+      "▁wije": 32597,
+      ":\nBo": 32598,
+      "▁człowieczy": 32599,
+      "▁waść": 32600,
+      "▁godzinę.": 32601,
+      "▁pierwéj": 32602,
+      "▁rodziców.": 32603,
+      "niosłem": 32604,
+      "▁nagle.\n": 32605,
+      "▁listki": 32606,
+      "▁Rozkaz": 32607,
+      "▁Możecie": 32608,
+      "▁zostawili": 32609,
+      "▁planów": 32610,
+      "▁utworzył": 32611,
+      "▁stole.\n": 32612,
+      "▁uledz": 32613,
+      "▁karmić": 32614,
+      "▁Sewer": 32615,
+      "zm.": 32616,
+      "▁płeć": 32617,
+      "▁połów": 32618,
+      "▁Prędzej": 32619,
+      "▁kokar": 32620,
+      "▁wierzyła": 32621,
+      "▁Niebezpie": 32622,
+      "▁najdziel": 32623,
+      "▁inną,": 32624,
+      "głą": 32625,
+      "▁Zazdro": 32626,
+      "▁synom": 32627,
+      "dzącego": 32628,
+      "rząsa": 32629,
+      "▁kroku.": 32630,
+      "▁figla": 32631,
+      "▁obawie,": 32632,
+      "bardzo": 32633,
+      "▁zobaczysz,": 32634,
+      "▁statków": 32635,
+      "▁szlachetnym": 32636,
+      "▁szare,": 32637,
+      "▁odzyskała": 32638,
+      "▁towarzyszów,": 32639,
+      "▁warunki,": 32640,
+      "▁kłamie": 32641,
+      "▁błagając": 32642,
+      "▁[61]": 32643,
+      "▁Loren": 32644,
+      "▁szpic": 32645,
+      "▁posadził": 32646,
+      "▁nowiny": 32647,
+      "▁ostrzeg": 32648,
+      "▁fortuna": 32649,
+      "▁oddychał": 32650,
+      "▁Jordan": 32651,
+      "▁sparaliż": 32652,
+      "im,": 32653,
+      "«\n\n": 32654,
+      "▁pons": 32655,
+      "▁odtwa": 32656,
+      "to.\n": 32657,
+      ".\n\nDo": 32658,
+      "▁znanej": 32659,
+      "▁patrzały": 32660,
+      "▁Stanów": 32661,
+      "pomni": 32662,
+      "▁zatrze": 32663,
+      "▁odeszli": 32664,
+      "▁wdzięczne": 32665,
+      "▁słówka": 32666,
+      "▁zmianie": 32667,
+      "▁udawał,": 32668,
+      "Czasem": 32669,
+      "▁[58]": 32670,
+      "▁niewinnych": 32671,
+      "DZI": 32672,
+      "▁poranek": 32673,
+      "▁folwark": 32674,
+      "▁zaniedby": 32675,
+      "▁klatki": 32676,
+      "▁nieświadom": 32677,
+      "Chociaż": 32678,
+      "\njak": 32679,
+      "ą!": 32680,
+      "stw.": 32681,
+      "▁podno": 32682,
+      "▁wikar": 32683,
+      "piło": 32684,
+      "▁pieszo,": 32685,
+      "▁had": 32686,
+      "▁jeszcze:": 32687,
+      "▁czele,": 32688,
+      "▁wędzi": 32689,
+      "▁postacie,": 32690,
+      "▁zajdzie": 32691,
+      "▁starosty": 32692,
+      "▁ubrany,": 32693,
+      "▁biegną": 32694,
+      "▁żelaza,": 32695,
+      "▁winszu": 32696,
+      "▁srebrnej": 32697,
+      "▁usiłowali": 32698,
+      "▁130": 32699,
+      "▁Grecy": 32700,
+      "▁malut": 32701,
+      "▁jałow": 32702,
+      "▁mnogo": 32703,
+      "▁wynagrodzić": 32704,
+      "▁Penkro": 32705,
+      "▁Słyszałem,": 32706,
+      "▁śledztwo": 32707,
+      "▁seryo": 32708,
+      "▁wizerunek": 32709,
+      "▁Pickwick": 32710,
+      "▁idźmy": 32711,
+      "▁gonić": 32712,
+      "▁Kli": 32713,
+      "▁rym": 32714,
+      "▁Stanow": 32715,
+      "▁trawie,": 32716,
+      "wą.\n": 32717,
+      "▁dyscypli": 32718,
+      "▁pismach": 32719,
+      "▁ważna": 32720,
+      "▁adre": 32721,
+      "▁Siedzi": 32722,
+      "▁moralnego": 32723,
+      "▁osobistego": 32724,
+      "▁potoczył": 32725,
+      "▁morzem,": 32726,
+      "▁nazywasz": 32727,
+      "▁paryz": 32728,
+      "▁niewielkiej": 32729,
+      "▁kolumna": 32730,
+      "▁odpowiednich": 32731,
+      "▁otwierały": 32732,
+      "▁starożytności": 32733,
+      "▁paznok": 32734,
+      "▁niedysk": 32735,
+      "-Z": 32736,
+      "rząg": 32737,
+      "▁mer": 32738,
+      "▁cha,": 32739,
+      "wiek": 32740,
+      "▁coprędzej": 32741,
+      "▁spych": 32742,
+      "▁ciszą": 32743,
+      "▁„że": 32744,
+      "ana;": 32745,
+      "▁bura": 32746,
+      "▁tronu,": 32747,
+      "▁także.\n": 32748,
+      "▁gruz": 32749,
+      "▁mówiłeś": 32750,
+      "▁obrazek": 32751,
+      "letni,": 32752,
+      "▁49": 32753,
+      "▁niebezpieczeństwem": 32754,
+      "▁okropna": 32755,
+      "▁dama,": 32756,
+      "▁podziwiał": 32757,
+      "▁kościelne": 32758,
+      "▁falu": 32759,
+      "gnione": 32760,
+      "Gdzież": 32761,
+      "▁mężczyzną": 32762,
+      "▁Paweł,": 32763,
+      "▁pozwalając": 32764,
+      "▁pierwotnie": 32765,
+      "▁wymawiał": 32766,
+      "▁najważniejsze": 32767
     },
     "merges": [
       [
@@ -157335,6 +158164,3078 @@
       [
         "▁pła",
         "t"
+      ],
+      [
+        "▁śmierci",
+        "ą."
+      ],
+      [
+        "▁rozpo",
+        "czyn"
+      ],
+      [
+        "▁kry",
+        "ła"
+      ],
+      [
+        "▁młod",
+        "szych"
+      ],
+      [
+        "▁zni",
+        "szczył"
+      ],
+      [
+        "▁kosz",
+        "tował"
+      ],
+      [
+        "▁spodzie",
+        "wał,"
+      ],
+      [
+        "▁okrop",
+        "nym"
+      ],
+      [
+        "▁chle",
+        "bie"
+      ],
+      [
+        "▁sier",
+        "mię"
+      ],
+      [
+        "▁poda",
+        "wać"
+      ],
+      [
+        "▁atmos",
+        "fery"
+      ],
+      [
+        "▁ko",
+        "go,"
+      ],
+      [
+        "▁A",
+        "ge"
+      ],
+      [
+        "▁Z",
+        "ni"
+      ],
+      [
+        "ta",
+        "?"
+      ],
+      [
+        "nę",
+        "li."
+      ],
+      [
+        "mu",
+        ".\n"
+      ],
+      [
+        "▁pro",
+        "my"
+      ],
+      [
+        "▁odp",
+        "rowadzi"
+      ],
+      [
+        "▁St",
+        "ro"
+      ],
+      [
+        "▁przyja",
+        "zd"
+      ],
+      [
+        "▁zawo",
+        "dy"
+      ],
+      [
+        "▁fi",
+        "joł"
+      ],
+      [
+        "▁wyd",
+        "any"
+      ],
+      [
+        "▁prag",
+        "nę,"
+      ],
+      [
+        "▁strze",
+        "li"
+      ],
+      [
+        "▁bły",
+        "szczą"
+      ],
+      [
+        "▁pę",
+        "t"
+      ],
+      [
+        "▁mówiąc",
+        "ego"
+      ],
+      [
+        "▁kosz",
+        "t"
+      ],
+      [
+        "▁Trze",
+        "ch"
+      ],
+      [
+        "▁Pow",
+        "óz"
+      ],
+      [
+        "▁żony",
+        ".\n"
+      ],
+      [
+        ".\nO",
+        "n"
+      ],
+      [
+        "▁sław",
+        "ne"
+      ],
+      [
+        "▁żą",
+        "dzę"
+      ],
+      [
+        "▁przod",
+        "kowie"
+      ],
+      [
+        "▁nóż",
+        ","
+      ],
+      [
+        "▁przyłą",
+        "czył"
+      ],
+      [
+        "▁wolał",
+        "bym"
+      ],
+      [
+        "▁sądził",
+        "em,"
+      ],
+      [
+        "▁ułat",
+        "wić"
+      ],
+      [
+        "0",
+        ","
+      ],
+      [
+        "u",
+        "sia"
+      ],
+      [
+        "ci",
+        "m"
+      ],
+      [
+        "na",
+        "rod"
+      ],
+      [
+        "▁P",
+        "ak"
+      ],
+      [
+        "▁P",
+        "RZE"
+      ],
+      [
+        "ku",
+        "r"
+      ],
+      [
+        "ob",
+        "ry"
+      ],
+      [
+        "▁f",
+        "ara"
+      ],
+      [
+        "su",
+        "d"
+      ],
+      [
+        "▁stra",
+        "cone"
+      ],
+      [
+        "▁Mo",
+        "gli"
+      ],
+      [
+        "▁kra",
+        "kowski"
+      ],
+      [
+        "ciu",
+        "ch"
+      ],
+      [
+        "▁Ma",
+        "ur"
+      ],
+      [
+        "▁bro",
+        "dy"
+      ],
+      [
+        "▁wzglę",
+        "dami"
+      ],
+      [
+        "!\n\n",
+        "\n\n\n\n"
+      ],
+      [
+        "rek",
+        ".\n"
+      ],
+      [
+        "▁znaczy",
+        ":"
+      ],
+      [
+        "▁odrzekł",
+        ","
+      ],
+      [
+        "ślo",
+        "ne"
+      ],
+      [
+        "▁miesiąc",
+        "e,"
+      ],
+      [
+        "▁[5",
+        "4]"
+      ],
+      [
+        "▁wich",
+        "ru"
+      ],
+      [
+        "▁dra",
+        "p"
+      ],
+      [
+        "▁obyczaj",
+        "u"
+      ],
+      [
+        "▁poka",
+        "ź"
+      ],
+      [
+        "▁ubogi",
+        "ch,"
+      ],
+      [
+        "▁odmawi",
+        "ać"
+      ],
+      [
+        "▁miłos",
+        "nych"
+      ],
+      [
+        "▁Kas",
+        "sy"
+      ],
+      [
+        "▁fantasty",
+        "czne"
+      ],
+      [
+        "▁kazno",
+        "dzie"
+      ],
+      [
+        "▁tamtę",
+        "dy"
+      ],
+      [
+        "b",
+        "eł"
+      ],
+      [
+        "▁na",
+        "zawsze"
+      ],
+      [
+        "▁za",
+        "szu"
+      ],
+      [
+        "ar",
+        "ta"
+      ],
+      [
+        "▁prze",
+        "ł"
+      ],
+      [
+        "▁M",
+        "ü"
+      ],
+      [
+        "▁Je",
+        "dź"
+      ],
+      [
+        "▁F",
+        "ara"
+      ],
+      [
+        "▁Za",
+        "c"
+      ],
+      [
+        "▁—\n",
+        "Jak"
+      ],
+      [
+        "▁żad",
+        "nem"
+      ],
+      [
+        "▁Sz",
+        "lachet"
+      ],
+      [
+        "▁Mar",
+        "hol"
+      ],
+      [
+        "▁wyd",
+        "atki"
+      ],
+      [
+        "▁dusz",
+        "ach"
+      ],
+      [
+        "▁dobro",
+        "byt"
+      ],
+      [
+        "▁osob",
+        "ę,"
+      ],
+      [
+        "▁poważ",
+        "nego"
+      ],
+      [
+        "▁ska",
+        "u"
+      ],
+      [
+        "▁Dzię",
+        "kuję,"
+      ],
+      [
+        "ST",
+        "RA"
+      ],
+      [
+        "▁wspomnie",
+        "ń,"
+      ],
+      [
+        "▁Hele",
+        "ny"
+      ],
+      [
+        "▁zastanowi",
+        "ć"
+      ],
+      [
+        "▁dopom",
+        "ógł"
+      ],
+      [
+        "▁opusz",
+        "czaj"
+      ],
+      [
+        "▁promie",
+        "niej"
+      ],
+      [
+        "▁wycho",
+        "dź"
+      ],
+      [
+        "▁mistrze",
+        "m"
+      ],
+      [
+        "▁j",
+        "aja"
+      ],
+      [
+        "st",
+        "ki"
+      ],
+      [
+        "▁po",
+        "so"
+      ],
+      [
+        "▁st",
+        "any"
+      ],
+      [
+        "▁od",
+        "jechać"
+      ],
+      [
+        "la",
+        "i"
+      ],
+      [
+        "▁wie",
+        "dz"
+      ],
+      [
+        "to",
+        "i"
+      ],
+      [
+        "▁Po",
+        "tę"
+      ],
+      [
+        "ję",
+        "!"
+      ],
+      [
+        "▁da",
+        "wszy"
+      ],
+      [
+        "▁Ch",
+        "am"
+      ],
+      [
+        "▁ost",
+        "rzy"
+      ],
+      [
+        "rowa",
+        "ś"
+      ],
+      [
+        "▁mę",
+        "czyć"
+      ],
+      [
+        "▁de",
+        "partam"
+      ],
+      [
+        "▁re",
+        "por"
+      ],
+      [
+        "▁e",
+        "wolu"
+      ],
+      [
+        ";\n",
+        "Za"
+      ],
+      [
+        "▁nale",
+        "żeli"
+      ],
+      [
+        "▁rozm",
+        "owa,"
+      ],
+      [
+        "▁posiad",
+        "aniu"
+      ],
+      [
+        "▁znak",
+        "ów"
+      ],
+      [
+        "▁siost",
+        "ra,"
+      ],
+      [
+        "▁Cho",
+        "dź,"
+      ],
+      [
+        "▁dobro",
+        "cią"
+      ],
+      [
+        "▁wyro",
+        "bić"
+      ],
+      [
+        "▁dziedzi",
+        "ńca"
+      ],
+      [
+        "▁słuch",
+        "a,"
+      ],
+      [
+        "▁żało",
+        "by"
+      ],
+      [
+        "▁mogłem",
+        "."
+      ],
+      [
+        "▁Mon",
+        "go"
+      ],
+      [
+        "▁mą",
+        "ki,"
+      ],
+      [
+        "▁okre",
+        "śl"
+      ],
+      [
+        "▁drg",
+        "nęła"
+      ],
+      [
+        "▁bud",
+        "że"
+      ],
+      [
+        "▁wykształ",
+        "cenie"
+      ],
+      [
+        "▁obrac",
+        "ał"
+      ],
+      [
+        "▁uzbro",
+        "jony"
+      ],
+      [
+        "▁zabezpie",
+        "czyć"
+      ],
+      [
+        "▁łaj",
+        "dak"
+      ],
+      [
+        "▁gmi",
+        "ny"
+      ],
+      [
+        "▁d‘",
+        "Artagnan"
+      ],
+      [
+        "▁zniesie",
+        "nia"
+      ],
+      [
+        "▁tchórz",
+        "ost"
+      ],
+      [
+        "▁uśmi",
+        "é"
+      ],
+      [
+        "R",
+        "az"
+      ],
+      [
+        "s",
+        "ne"
+      ],
+      [
+        "▁S",
+        "pełni"
+      ],
+      [
+        "▁sp",
+        "lo"
+      ],
+      [
+        "▁dzi",
+        "ki,"
+      ],
+      [
+        "zu",
+        "ją"
+      ],
+      [
+        "▁ła",
+        "py"
+      ],
+      [
+        "▁słu",
+        "gi,"
+      ],
+      [
+        "▁sł",
+        "owy,"
+      ],
+      [
+        "br",
+        "ała"
+      ],
+      [
+        "▁de",
+        "wo"
+      ],
+      [
+        "▁wa",
+        "sze,"
+      ],
+      [
+        "▁wyp",
+        "łak"
+      ],
+      [
+        "▁robi",
+        "ły"
+      ],
+      [
+        "▁wal",
+        "czących"
+      ],
+      [
+        "▁obu",
+        "rzony"
+      ],
+      [
+        "▁In",
+        "flan"
+      ],
+      [
+        "▁sen",
+        "sa"
+      ],
+      [
+        "▁sza",
+        "cow"
+      ],
+      [
+        "▁zdra",
+        "da"
+      ],
+      [
+        "▁polity",
+        "ka"
+      ],
+      [
+        "▁odkry",
+        "cie"
+      ],
+      [
+        "▁ocho",
+        "czo"
+      ],
+      [
+        "▁cof",
+        "ając"
+      ],
+      [
+        "▁Mło",
+        "d"
+      ],
+      [
+        "▁spi",
+        "ż"
+      ],
+      [
+        "▁woł",
+        "ania"
+      ],
+      [
+        "▁bezw",
+        "ładnie"
+      ],
+      [
+        "▁szeroko",
+        "ści"
+      ],
+      [
+        "▁śmiesz",
+        "ne"
+      ],
+      [
+        "▁szczęśliwy",
+        "m,"
+      ],
+      [
+        "▁stłu",
+        "mionym"
+      ],
+      [
+        "▁Jedy",
+        "ną"
+      ],
+      [
+        "▁nieła",
+        "two"
+      ],
+      [
+        "▁trac",
+        "ą"
+      ],
+      [
+        "\n",
+        "do"
+      ],
+      [
+        "c",
+        "ować"
+      ],
+      [
+        "h",
+        "di,"
+      ],
+      [
+        "▁w",
+        "sunęła"
+      ],
+      [
+        "▁po",
+        "skoczył"
+      ],
+      [
+        "▁nie",
+        "nar"
+      ],
+      [
+        "▁przy",
+        "niesi"
+      ],
+      [
+        "▁N",
+        "ow"
+      ],
+      [
+        "to",
+        "k"
+      ],
+      [
+        "▁ży",
+        "jesz"
+      ],
+      [
+        "▁cie",
+        "śni"
+      ],
+      [
+        "▁dru",
+        "z"
+      ],
+      [
+        "▁ta",
+        "bu"
+      ],
+      [
+        "▁mło",
+        "ko"
+      ],
+      [
+        "▁pięk",
+        "nemi"
+      ],
+      [
+        "▁wyp",
+        "rowadz"
+      ],
+      [
+        "▁przysz",
+        "łą"
+      ],
+      [
+        "▁uważ",
+        "asz"
+      ],
+      [
+        "▁pis",
+        "ma,"
+      ],
+      [
+        "▁dziewczy",
+        "ny."
+      ],
+      [
+        "▁sur",
+        "owego"
+      ],
+      [
+        "▁zało",
+        "żenia"
+      ],
+      [
+        "▁zwróci",
+        "łem"
+      ],
+      [
+        "▁fak",
+        "tem"
+      ],
+      [
+        "▁wystar",
+        "czyło"
+      ],
+      [
+        "▁tre",
+        "ści,"
+      ],
+      [
+        "▁otacz",
+        "ają"
+      ],
+      [
+        "▁bynajmniej",
+        ","
+      ],
+      [
+        "▁otch",
+        "łanie"
+      ],
+      [
+        "▁trzę",
+        "sa"
+      ],
+      [
+        "▁klejno",
+        "t"
+      ],
+      [
+        "▁wyraże",
+        "nie"
+      ],
+      [
+        "▁ironi",
+        "cznie"
+      ],
+      [
+        "▁zaprzy",
+        "ja"
+      ],
+      [
+        "▁produ",
+        "kt"
+      ],
+      [
+        "▁z",
+        "ma"
+      ],
+      [
+        "to",
+        "n."
+      ],
+      [
+        "▁mie",
+        "rzy"
+      ],
+      [
+        "ba",
+        "w"
+      ],
+      [
+        "▁któr",
+        "ą,"
+      ],
+      [
+        "▁bez",
+        "cel"
+      ],
+      [
+        "▁ku",
+        "si"
+      ],
+      [
+        "▁cho",
+        "le"
+      ],
+      [
+        "▁pani",
+        "?\n"
+      ],
+      [
+        "▁To",
+        "by"
+      ],
+      [
+        "ecz",
+        "ki,"
+      ],
+      [
+        "▁mło",
+        "dzi,"
+      ],
+      [
+        "▁obo",
+        "k,"
+      ],
+      [
+        "▁Ko",
+        "re"
+      ],
+      [
+        "▁róż",
+        "nice"
+      ],
+      [
+        "tel",
+        "lo."
+      ],
+      [
+        "▁prag",
+        "nie,"
+      ],
+      [
+        "rząc",
+        "ych"
+      ],
+      [
+        "▁zau",
+        "ł"
+      ],
+      [
+        "▁bło",
+        "tem"
+      ],
+      [
+        "▁pom",
+        "ału"
+      ],
+      [
+        "▁poru",
+        "szenie"
+      ],
+      [
+        "▁papie",
+        "rze"
+      ],
+      [
+        "▁Boga",
+        ".\n"
+      ],
+      [
+        "▁dzwo",
+        "nka"
+      ],
+      [
+        "▁żąd",
+        "ając"
+      ],
+      [
+        "▁ubr",
+        "ania,"
+      ],
+      [
+        "▁umi",
+        "ałem"
+      ],
+      [
+        "▁groź",
+        "bą"
+      ],
+      [
+        "▁ciep",
+        "łą"
+      ],
+      [
+        "▁pogo",
+        "dę"
+      ],
+      [
+        "▁zwierzę",
+        "cia"
+      ],
+      [
+        "▁usz",
+        "lachet"
+      ],
+      [
+        "▁oczeki",
+        "wanie"
+      ],
+      [
+        "▁niemie",
+        "ckiej"
+      ],
+      [
+        "▁sce",
+        "nie,"
+      ],
+      [
+        "▁zamiesz",
+        "czonych"
+      ],
+      [
+        "▁nieprze",
+        "nik"
+      ],
+      [
+        "▁wyg",
+        "ię"
+      ],
+      [
+        "▁wrze",
+        "szcz"
+      ],
+      [
+        "▁zrzu",
+        "cić"
+      ],
+      [
+        "st",
+        "ary"
+      ],
+      [
+        "▁po",
+        "o"
+      ],
+      [
+        "▁prze",
+        "no"
+      ],
+      [
+        "▁prze",
+        "mij"
+      ],
+      [
+        "at",
+        "ak"
+      ],
+      [
+        "▁przy",
+        "stał"
+      ],
+      [
+        "▁J",
+        "éj"
+      ],
+      [
+        "▁ma",
+        "czu"
+      ],
+      [
+        "▁E",
+        "ust"
+      ],
+      [
+        "▁Ś",
+        "wią"
+      ],
+      [
+        "▁nau",
+        "ki."
+      ],
+      [
+        "▁sła",
+        "wie"
+      ],
+      [
+        "▁umie",
+        "jąc"
+      ],
+      [
+        "▁twarzy",
+        "czka"
+      ],
+      [
+        "▁opowiad",
+        "ali"
+      ],
+      [
+        "▁przep",
+        "ięk"
+      ],
+      [
+        "▁ptak",
+        "ów,"
+      ],
+      [
+        "▁oszu",
+        "ki"
+      ],
+      [
+        "▁gałęzi",
+        "ach"
+      ],
+      [
+        "▁przeklę",
+        "te"
+      ],
+      [
+        "▁db",
+        "ać"
+      ],
+      [
+        "▁omy",
+        "ł"
+      ],
+      [
+        "▁zawiad",
+        "o"
+      ],
+      [
+        "▁nieświad",
+        "omo"
+      ],
+      [
+        "▁kilkakro",
+        "ć"
+      ],
+      [
+        "▁B",
+        "at"
+      ],
+      [
+        "▁Co",
+        "l"
+      ],
+      [
+        "▁sko",
+        "kiem"
+      ],
+      [
+        "za",
+        "cji"
+      ],
+      [
+        "▁Ko",
+        "za"
+      ],
+      [
+        "▁Od",
+        "da"
+      ],
+      [
+        "▁pol",
+        "skie,"
+      ],
+      [
+        "row",
+        "ały"
+      ],
+      [
+        "▁nikt",
+        "by"
+      ],
+      [
+        "▁obu",
+        "rzył"
+      ],
+      [
+        "▁dosko",
+        "nal"
+      ],
+      [
+        "gnie",
+        "niem"
+      ],
+      [
+        "▁ptak",
+        ","
+      ],
+      [
+        "▁spogląd",
+        "ać"
+      ],
+      [
+        "▁uf",
+        "nością"
+      ],
+      [
+        "▁tryumf",
+        "u"
+      ],
+      [
+        "▁przekona",
+        "wszy"
+      ],
+      [
+        "▁leś",
+        "ne"
+      ],
+      [
+        "▁piekie",
+        "ł"
+      ],
+      [
+        "▁ukła",
+        "dy"
+      ],
+      [
+        "▁Ge",
+        "de"
+      ],
+      [
+        "▁ubó",
+        "stwo"
+      ],
+      [
+        "▁gli",
+        "ny"
+      ],
+      [
+        "▁Paw",
+        "ła,"
+      ],
+      [
+        "▁Wyd",
+        "ało"
+      ],
+      [
+        "▁widz",
+        "ów"
+      ],
+      [
+        "▁stol",
+        "nik"
+      ],
+      [
+        "▁burżu",
+        "a"
+      ],
+      [
+        "▁w",
+        "lazł"
+      ],
+      [
+        "▁d",
+        "wie,"
+      ],
+      [
+        "go",
+        ".\n"
+      ],
+      [
+        "le",
+        "ś"
+      ],
+      [
+        "ło",
+        "m,"
+      ],
+      [
+        "▁c",
+        "an"
+      ],
+      [
+        "▁wy",
+        "strz"
+      ],
+      [
+        "▁od",
+        "różni"
+      ],
+      [
+        "▁przy",
+        "jechali"
+      ],
+      [
+        "▁W",
+        "zd"
+      ],
+      [
+        "▁sk",
+        "owy"
+      ],
+      [
+        "▁pu",
+        "ść"
+      ],
+      [
+        "▁fi",
+        "g"
+      ],
+      [
+        "▁cieka",
+        "w"
+      ],
+      [
+        "▁drob",
+        "ne,"
+      ],
+      [
+        "▁zdol",
+        "nym"
+      ],
+      [
+        "▁nu",
+        "dzi"
+      ],
+      [
+        "▁skrom",
+        "ną"
+      ],
+      [
+        "▁twier",
+        "dząc,"
+      ],
+      [
+        "▁osobi",
+        "stości"
+      ],
+      [
+        "▁okre",
+        "su"
+      ],
+      [
+        "▁otacz",
+        "ające"
+      ],
+      [
+        "▁społecz",
+        "nego"
+      ],
+      [
+        "▁przew",
+        "róci"
+      ],
+      [
+        "▁nosi",
+        "li"
+      ],
+      [
+        "▁Tro",
+        "i"
+      ],
+      [
+        "▁zosta",
+        "wał"
+      ],
+      [
+        "▁właściciel",
+        "em"
+      ],
+      [
+        "▁wyży",
+        "n"
+      ],
+      [
+        "▁ojcze",
+        "!"
+      ],
+      [
+        "▁teo",
+        "log"
+      ],
+      [
+        "▁uka",
+        "rać"
+      ],
+      [
+        "▁odzi",
+        "any"
+      ],
+      [
+        "▁fir",
+        "m"
+      ],
+      [
+        "▁heł",
+        "m"
+      ],
+      [
+        "3",
+        "3"
+      ],
+      [
+        "o",
+        "pis"
+      ],
+      [
+        ".\n",
+        "N"
+      ],
+      [
+        "▁za",
+        "mo"
+      ],
+      [
+        "▁od",
+        "bieg"
+      ],
+      [
+        "▁ko",
+        "ja"
+      ],
+      [
+        "▁A",
+        "ri"
+      ],
+      [
+        "du",
+        "l"
+      ],
+      [
+        "▁powie",
+        "dzieli,"
+      ],
+      [
+        "▁(",
+        "za"
+      ],
+      [
+        "kow",
+        "skiego,"
+      ],
+      [
+        "zie",
+        "mie"
+      ],
+      [
+        "▁tro",
+        "szcząc"
+      ],
+      [
+        "▁powo",
+        "dzeniem"
+      ],
+      [
+        "▁jeden",
+        "."
+      ],
+      [
+        "▁Mar",
+        "cel"
+      ],
+      [
+        "▁kom",
+        "pli"
+      ],
+      [
+        "▁dni",
+        ".\n"
+      ],
+      [
+        "▁szep",
+        "ty"
+      ],
+      [
+        ",\nC",
+        "i"
+      ],
+      [
+        "▁niebezpie",
+        "czny"
+      ],
+      [
+        "▁pocz",
+        "em,"
+      ],
+      [
+        "▁chodzi",
+        "ć,"
+      ],
+      [
+        "▁pomy",
+        "sły"
+      ],
+      [
+        "▁[5",
+        "6]"
+      ],
+      [
+        "▁us",
+        "ch"
+      ],
+      [
+        "▁wese",
+        "li"
+      ],
+      [
+        "▁isk",
+        "ra"
+      ],
+      [
+        "▁wciąg",
+        "nąć"
+      ],
+      [
+        "▁bezwzglę",
+        "d"
+      ],
+      [
+        "▁ustro",
+        "ju"
+      ],
+      [
+        "▁it",
+        "p."
+      ],
+      [
+        "▁Wiadomo",
+        "ść"
+      ],
+      [
+        "▁Alek",
+        "sy"
+      ],
+      [
+        "▁oświ",
+        "aty"
+      ],
+      [
+        "▁Połanie",
+        "cki"
+      ],
+      [
+        "▁przygni",
+        "at"
+      ],
+      [
+        "▁Brzo",
+        "z"
+      ],
+      [
+        "D",
+        "O"
+      ],
+      [
+        "h",
+        "n"
+      ],
+      [
+        "t",
+        "owa"
+      ],
+      [
+        "ni",
+        "ałych"
+      ],
+      [
+        "szy",
+        "sz"
+      ],
+      [
+        "▁sz",
+        "ej"
+      ],
+      [
+        "▁M",
+        "ów,"
+      ],
+      [
+        "▁C",
+        "le"
+      ],
+      [
+        "▁D",
+        "my"
+      ],
+      [
+        "▁Po",
+        "prze"
+      ],
+      [
+        ":\n",
+        "K"
+      ],
+      [
+        "▁cho",
+        "ra,"
+      ],
+      [
+        "▁chło",
+        "dem"
+      ],
+      [
+        "▁koch",
+        "anego"
+      ],
+      [
+        "▁ści",
+        "gał"
+      ],
+      [
+        "▁ciąg",
+        "łego"
+      ],
+      [
+        "▁świę",
+        "téj"
+      ],
+      [
+        "▁zb",
+        "óż"
+      ],
+      [
+        "▁wzg",
+        "ór"
+      ],
+      [
+        "▁uważ",
+        "ał,"
+      ],
+      [
+        "▁bied",
+        "nemu"
+      ],
+      [
+        "▁pój",
+        "dę,"
+      ],
+      [
+        "▁umar",
+        "twie"
+      ],
+      [
+        "▁chodzi",
+        "ł,"
+      ],
+      [
+        "▁dziedzi",
+        "ny"
+      ],
+      [
+        "▁idzie",
+        "sz"
+      ],
+      [
+        "▁śpi",
+        "ąc"
+      ],
+      [
+        "▁urzą",
+        "dzenie"
+      ],
+      [
+        "▁bogat",
+        "ej"
+      ],
+      [
+        "▁Sły",
+        "sze"
+      ],
+      [
+        "▁kapitan",
+        "em"
+      ],
+      [
+        "▁żał",
+        "uje"
+      ],
+      [
+        "▁dziewczyn",
+        "ka,"
+      ],
+      [
+        "▁pozba",
+        "wił"
+      ],
+      [
+        "▁wyczy",
+        "tał"
+      ],
+      [
+        "▁Naro",
+        "dzenia"
+      ],
+      [
+        "▁wystąpi",
+        "ły"
+      ],
+      [
+        "E",
+        "GO"
+      ],
+      [
+        "j",
+        "ono"
+      ],
+      [
+        "dz",
+        "ałem"
+      ],
+      [
+        "ro",
+        "da"
+      ],
+      [
+        "▁Nie",
+        "u"
+      ],
+      [
+        "cho",
+        "ć"
+      ],
+      [
+        "▁czas",
+        "ów."
+      ],
+      [
+        "▁og",
+        "rz"
+      ],
+      [
+        "▁zie",
+        "leń"
+      ],
+      [
+        "▁dale",
+        "kiego"
+      ],
+      [
+        "▁zda",
+        "rzeń"
+      ],
+      [
+        "▁Wie",
+        "działem"
+      ],
+      [
+        "▁wiele",
+        "b"
+      ],
+      [
+        "▁rzecz",
+        "!"
+      ],
+      [
+        "▁skar",
+        "by,"
+      ],
+      [
+        "▁ode",
+        "bra"
+      ],
+      [
+        "▁Cho",
+        "dziło"
+      ],
+      [
+        "▁świad",
+        "czą"
+      ],
+      [
+        "▁wyj",
+        "rzał"
+      ],
+      [
+        "cach",
+        "."
+      ],
+      [
+        "▁um",
+        "owy"
+      ],
+      [
+        "▁Mówi",
+        "sz"
+      ],
+      [
+        "stwie",
+        "."
+      ],
+      [
+        "▁oświad",
+        "cz"
+      ],
+      [
+        "▁spi",
+        "sk"
+      ],
+      [
+        "▁niewin",
+        "ną"
+      ],
+      [
+        "▁mądro",
+        "ści,"
+      ],
+      [
+        "▁Kur",
+        "t"
+      ],
+      [
+        "▁zdrow",
+        "a,"
+      ],
+      [
+        "▁przygląd",
+        "ała"
+      ],
+      [
+        "▁tabak",
+        "ier"
+      ],
+      [
+        "▁labi",
+        "ryn"
+      ],
+      [
+        "▁chrześ",
+        "cja"
+      ],
+      [
+        "r",
+        "emu"
+      ],
+      [
+        "é",
+        "ra"
+      ],
+      [
+        "je",
+        "cie"
+      ],
+      [
+        "▁roz",
+        "gry"
+      ],
+      [
+        "▁wi",
+        "dzieć."
+      ],
+      [
+        "▁dzi",
+        "atki"
+      ],
+      [
+        "▁mię",
+        "sz"
+      ],
+      [
+        "▁wa",
+        "gi,"
+      ],
+      [
+        "▁Mo",
+        "c"
+      ],
+      [
+        "▁odpowie",
+        "dniego"
+      ],
+      [
+        "▁powo",
+        "zie"
+      ],
+      [
+        "▁uśmie",
+        "chy"
+      ],
+      [
+        "▁wiecz",
+        "nych"
+      ],
+      [
+        "▁pop",
+        "rostu,"
+      ],
+      [
+        "▁ucie",
+        "kli"
+      ],
+      [
+        "▁stał",
+        "ego"
+      ],
+      [
+        "▁3",
+        ")"
+      ],
+      [
+        "▁In",
+        "dyj"
+      ],
+      [
+        "▁niebie",
+        "skiej"
+      ],
+      [
+        "▁wzru",
+        "szyła"
+      ],
+      [
+        "▁mas",
+        "ła,"
+      ],
+      [
+        "▁[3",
+        "3"
+      ],
+      [
+        "▁francu",
+        "skie"
+      ],
+      [
+        "▁sprawiedli",
+        "wie"
+      ],
+      [
+        "AN",
+        "A"
+      ],
+      [
+        "▁ża",
+        "giel"
+      ],
+      [
+        "▁nu",
+        "ty"
+      ],
+      [
+        "▁posz",
+        "liśmy"
+      ],
+      [
+        "▁Jul",
+        "ja"
+      ],
+      [
+        "▁dłuż",
+        "szego"
+      ],
+      [
+        "▁nieje",
+        "dnego"
+      ],
+      [
+        "▁niedźwie",
+        "dzie"
+      ],
+      [
+        "▁młode",
+        ","
+      ],
+      [
+        "▁węz",
+        "ły"
+      ],
+      [
+        "▁Kaj",
+        "et"
+      ],
+      [
+        "▁d",
+        "ać,"
+      ],
+      [
+        ".\n",
+        "Ch"
+      ],
+      [
+        "▁za",
+        "staw"
+      ],
+      [
+        "▁S",
+        "ad"
+      ],
+      [
+        "▁S",
+        "we"
+      ],
+      [
+        "▁T",
+        "ą"
+      ],
+      [
+        "▁mu",
+        "rów,"
+      ],
+      [
+        "▁już",
+        "."
+      ],
+      [
+        "▁da",
+        "la"
+      ],
+      [
+        "fi",
+        "te"
+      ],
+      [
+        "gu",
+        ".\n"
+      ],
+      [
+        "▁śmie",
+        "ch,"
+      ],
+      [
+        "▁koch",
+        "ania"
+      ],
+      [
+        "▁zupeł",
+        "nym"
+      ],
+      [
+        "ral",
+        "nie"
+      ],
+      [
+        "▁me",
+        "cze"
+      ],
+      [
+        "nio",
+        "nemi"
+      ],
+      [
+        "▁samo",
+        "ist"
+      ],
+      [
+        "▁opowiad",
+        "ać,"
+      ],
+      [
+        "▁wspól",
+        "nych"
+      ],
+      [
+        "▁złego",
+        "."
+      ],
+      [
+        "▁opar",
+        "tą"
+      ],
+      [
+        "▁natch",
+        "nienie"
+      ],
+      [
+        "▁sier",
+        "żan"
+      ],
+      [
+        "▁zwycięz",
+        "twa"
+      ],
+      [
+        "▁kary",
+        "ka"
+      ],
+      [
+        "▁zagro",
+        "dy"
+      ],
+      [
+        "▁pieczę",
+        "ć"
+      ],
+      [
+        "▁dziewczą",
+        "t,"
+      ],
+      [
+        "▁t",
+        "ka"
+      ],
+      [
+        "▁po",
+        "rze,"
+      ],
+      [
+        "ry",
+        "!"
+      ],
+      [
+        "▁jak",
+        "u"
+      ],
+      [
+        "▁roz",
+        "bić"
+      ],
+      [
+        "▁O",
+        "na,"
+      ],
+      [
+        "▁„",
+        "bo"
+      ],
+      [
+        "▁ja",
+        ".\n"
+      ],
+      [
+        "▁pi",
+        "szczał"
+      ],
+      [
+        "ował",
+        "em,"
+      ],
+      [
+        "sie",
+        "ur"
+      ],
+      [
+        "▁on",
+        "!"
+      ],
+      [
+        "▁kil",
+        "ku,"
+      ],
+      [
+        "▁ba",
+        "!"
+      ],
+      [
+        "▁kar",
+        "ta"
+      ],
+      [
+        "▁par",
+        "ę,"
+      ],
+      [
+        "▁hi",
+        "pote"
+      ],
+      [
+        "▁kry",
+        "ją"
+      ],
+      [
+        "▁pę",
+        "dzić"
+      ],
+      [
+        "▁Dzi",
+        "wny"
+      ],
+      [
+        "kty",
+        "w"
+      ],
+      [
+        "▁[5",
+        "9]"
+      ],
+      [
+        "▁spoczy",
+        "nek,"
+      ],
+      [
+        "▁sześć",
+        "dziesięciu"
+      ],
+      [
+        "▁błyszcz",
+        "ący"
+      ],
+      [
+        "▁zapach",
+        "u"
+      ],
+      [
+        "▁nog",
+        "ami."
+      ],
+      [
+        "▁tygod",
+        "nie,"
+      ],
+      [
+        "▁sprzed",
+        "aje"
+      ],
+      [
+        "▁bit",
+        "wę"
+      ],
+      [
+        "▁wiceh",
+        "rabi"
+      ],
+      [
+        "▁wes",
+        "ół"
+      ],
+      [
+        "p",
+        "!"
+      ],
+      [
+        "▁ch",
+        "lub"
+      ],
+      [
+        "▁sz",
+        "aty,"
+      ],
+      [
+        "▁D",
+        "ie"
+      ],
+      [
+        "▁Po",
+        "szła"
+      ],
+      [
+        "▁bo",
+        "so"
+      ],
+      [
+        "▁mówi",
+        "my"
+      ],
+      [
+        "▁U",
+        "f"
+      ],
+      [
+        "▁re",
+        "wiz"
+      ],
+      [
+        "stąpi",
+        "li"
+      ],
+      [
+        "▁moje",
+        "!"
+      ],
+      [
+        "a,\n",
+        "O"
+      ],
+      [
+        "ując",
+        "ej"
+      ],
+      [
+        "▁pło",
+        "ną"
+      ],
+      [
+        "▁cór",
+        "ką,"
+      ],
+      [
+        "▁pyt",
+        "aj"
+      ],
+      [
+        "▁kat",
+        "u"
+      ],
+      [
+        "▁zwycię",
+        "ży"
+      ],
+      [
+        "▁wzru",
+        "szona"
+      ],
+      [
+        "tach",
+        ".\n"
+      ],
+      [
+        "▁chmu",
+        "rą"
+      ],
+      [
+        "▁podej",
+        "m"
+      ],
+      [
+        "▁nos",
+        "a,"
+      ],
+      [
+        "▁win",
+        "ny"
+      ],
+      [
+        "▁rzad",
+        "ki"
+      ],
+      [
+        "▁kru",
+        "sz"
+      ],
+      [
+        "▁odczu",
+        "ł"
+      ],
+      [
+        "▁poszu",
+        "kać"
+      ],
+      [
+        "▁śniad",
+        "ania"
+      ],
+      [
+        "▁krop",
+        "lami"
+      ],
+      [
+        "▁zegar",
+        "ek,"
+      ],
+      [
+        "▁dowi",
+        "ódł"
+      ],
+      [
+        "▁spuszczo",
+        "nemi"
+      ],
+      [
+        "▁wąwo",
+        "zu"
+      ],
+      [
+        "Czem",
+        "uż"
+      ],
+      [
+        "f",
+        "um"
+      ],
+      [
+        "s",
+        "na"
+      ],
+      [
+        "▁po",
+        "stąpiła"
+      ],
+      [
+        "▁prze",
+        "robi"
+      ],
+      [
+        "▁przy",
+        "pie"
+      ],
+      [
+        "▁C",
+        "raw"
+      ],
+      [
+        "▁wi",
+        "je"
+      ],
+      [
+        ":\n",
+        "Bo"
+      ],
+      [
+        "▁człowie",
+        "czy"
+      ],
+      [
+        "▁wa",
+        "ść"
+      ],
+      [
+        "▁godzi",
+        "nę."
+      ],
+      [
+        "▁pierw",
+        "éj"
+      ],
+      [
+        "▁rodzi",
+        "ców."
+      ],
+      [
+        "nios",
+        "łem"
+      ],
+      [
+        "▁nagle",
+        ".\n"
+      ],
+      [
+        "▁list",
+        "ki"
+      ],
+      [
+        "▁Roz",
+        "kaz"
+      ],
+      [
+        "▁Może",
+        "cie"
+      ],
+      [
+        "▁zostawi",
+        "li"
+      ],
+      [
+        "▁plan",
+        "ów"
+      ],
+      [
+        "▁utwo",
+        "rzył"
+      ],
+      [
+        "▁stole",
+        ".\n"
+      ],
+      [
+        "▁ule",
+        "dz"
+      ],
+      [
+        "▁karmi",
+        "ć"
+      ],
+      [
+        "▁Sew",
+        "er"
+      ],
+      [
+        "z",
+        "m."
+      ],
+      [
+        "▁p",
+        "łeć"
+      ],
+      [
+        "▁po",
+        "łów"
+      ],
+      [
+        "▁P",
+        "rędzej"
+      ],
+      [
+        "▁ko",
+        "kar"
+      ],
+      [
+        "▁wie",
+        "rzyła"
+      ],
+      [
+        "▁Nie",
+        "bezpie"
+      ],
+      [
+        "▁naj",
+        "dziel"
+      ],
+      [
+        "▁in",
+        "ną,"
+      ],
+      [
+        "gł",
+        "ą"
+      ],
+      [
+        "▁Za",
+        "zdro"
+      ],
+      [
+        "▁sy",
+        "nom"
+      ],
+      [
+        "dząc",
+        "ego"
+      ],
+      [
+        "rzą",
+        "sa"
+      ],
+      [
+        "▁kro",
+        "ku."
+      ],
+      [
+        "▁fi",
+        "gla"
+      ],
+      [
+        "▁oba",
+        "wie,"
+      ],
+      [
+        "bar",
+        "dzo"
+      ],
+      [
+        "▁zobaczy",
+        "sz,"
+      ],
+      [
+        "▁stat",
+        "ków"
+      ],
+      [
+        "▁szlachet",
+        "nym"
+      ],
+      [
+        "▁szar",
+        "e,"
+      ],
+      [
+        "▁odzy",
+        "skała"
+      ],
+      [
+        "▁towarzysz",
+        "ów,"
+      ],
+      [
+        "▁warun",
+        "ki,"
+      ],
+      [
+        "▁kła",
+        "mie"
+      ],
+      [
+        "▁błag",
+        "ając"
+      ],
+      [
+        "▁[6",
+        "1]"
+      ],
+      [
+        "▁Lo",
+        "ren"
+      ],
+      [
+        "▁szpi",
+        "c"
+      ],
+      [
+        "▁posa",
+        "dził"
+      ],
+      [
+        "▁nowi",
+        "ny"
+      ],
+      [
+        "▁ostrze",
+        "g"
+      ],
+      [
+        "▁fortu",
+        "na"
+      ],
+      [
+        "▁oddy",
+        "chał"
+      ],
+      [
+        "▁Jord",
+        "an"
+      ],
+      [
+        "▁spara",
+        "liż"
+      ],
+      [
+        "i",
+        "m,"
+      ],
+      [
+        "«",
+        "\n\n"
+      ],
+      [
+        "▁po",
+        "ns"
+      ],
+      [
+        "▁od",
+        "twa"
+      ],
+      [
+        "to",
+        ".\n"
+      ],
+      [
+        ".\n\n",
+        "Do"
+      ],
+      [
+        "▁zn",
+        "anej"
+      ],
+      [
+        "▁pat",
+        "rzały"
+      ],
+      [
+        "▁St",
+        "anów"
+      ],
+      [
+        "pom",
+        "ni"
+      ],
+      [
+        "▁zat",
+        "rze"
+      ],
+      [
+        "▁ode",
+        "szli"
+      ],
+      [
+        "▁wdzię",
+        "czne"
+      ],
+      [
+        "▁słów",
+        "ka"
+      ],
+      [
+        "▁zmi",
+        "anie"
+      ],
+      [
+        "▁uda",
+        "wał,"
+      ],
+      [
+        "Cz",
+        "asem"
+      ],
+      [
+        "▁[5",
+        "8]"
+      ],
+      [
+        "▁niewin",
+        "nych"
+      ],
+      [
+        "DZ",
+        "I"
+      ],
+      [
+        "▁poran",
+        "ek"
+      ],
+      [
+        "▁folwar",
+        "k"
+      ],
+      [
+        "▁zanied",
+        "by"
+      ],
+      [
+        "▁klat",
+        "ki"
+      ],
+      [
+        "▁nieświad",
+        "om"
+      ],
+      [
+        "Cho",
+        "ciaż"
+      ],
+      [
+        "\n",
+        "jak"
+      ],
+      [
+        "ą",
+        "!"
+      ],
+      [
+        "st",
+        "w."
+      ],
+      [
+        "▁pod",
+        "no"
+      ],
+      [
+        "▁wi",
+        "kar"
+      ],
+      [
+        "pi",
+        "ło"
+      ],
+      [
+        "▁pie",
+        "szo,"
+      ],
+      [
+        "▁h",
+        "ad"
+      ],
+      [
+        "▁jeszcze",
+        ":"
+      ],
+      [
+        "▁cze",
+        "le,"
+      ],
+      [
+        "▁wę",
+        "dzi"
+      ],
+      [
+        "▁posta",
+        "cie,"
+      ],
+      [
+        "▁zaj",
+        "dzie"
+      ],
+      [
+        "▁staro",
+        "sty"
+      ],
+      [
+        "▁ubr",
+        "any,"
+      ],
+      [
+        "▁bieg",
+        "ną"
+      ],
+      [
+        "▁żelaz",
+        "a,"
+      ],
+      [
+        "▁win",
+        "szu"
+      ],
+      [
+        "▁srebr",
+        "nej"
+      ],
+      [
+        "▁usił",
+        "owali"
+      ],
+      [
+        "▁13",
+        "0"
+      ],
+      [
+        "▁Gre",
+        "cy"
+      ],
+      [
+        "▁malu",
+        "t"
+      ],
+      [
+        "▁jał",
+        "ow"
+      ],
+      [
+        "▁mno",
+        "go"
+      ],
+      [
+        "▁wynagro",
+        "dzić"
+      ],
+      [
+        "▁Pen",
+        "kro"
+      ],
+      [
+        "▁Słyszał",
+        "em,"
+      ],
+      [
+        "▁śledz",
+        "two"
+      ],
+      [
+        "▁sery",
+        "o"
+      ],
+      [
+        "▁wizeru",
+        "nek"
+      ],
+      [
+        "▁Pickwi",
+        "ck"
+      ],
+      [
+        "▁i",
+        "dźmy"
+      ],
+      [
+        "▁go",
+        "nić"
+      ],
+      [
+        "▁K",
+        "li"
+      ],
+      [
+        "▁ry",
+        "m"
+      ],
+      [
+        "▁St",
+        "anow"
+      ],
+      [
+        "▁tra",
+        "wie,"
+      ],
+      [
+        "wą",
+        ".\n"
+      ],
+      [
+        "▁dy",
+        "scypli"
+      ],
+      [
+        "▁pis",
+        "mach"
+      ],
+      [
+        "▁waż",
+        "na"
+      ],
+      [
+        "▁ad",
+        "re"
+      ],
+      [
+        "▁Sie",
+        "dzi"
+      ],
+      [
+        "▁moral",
+        "nego"
+      ],
+      [
+        "▁osobi",
+        "stego"
+      ],
+      [
+        "▁poto",
+        "czył"
+      ],
+      [
+        "▁morze",
+        "m,"
+      ],
+      [
+        "▁nazywa",
+        "sz"
+      ],
+      [
+        "▁pary",
+        "z"
+      ],
+      [
+        "▁niewiel",
+        "kiej"
+      ],
+      [
+        "▁kolum",
+        "na"
+      ],
+      [
+        "▁odpowiedni",
+        "ch"
+      ],
+      [
+        "▁otwier",
+        "ały"
+      ],
+      [
+        "▁starożyt",
+        "ności"
+      ],
+      [
+        "▁pazno",
+        "k"
+      ],
+      [
+        "▁niedy",
+        "sk"
+      ],
+      [
+        "-",
+        "Z"
+      ],
+      [
+        "rz",
+        "ąg"
+      ],
+      [
+        "▁m",
+        "er"
+      ],
+      [
+        "▁ch",
+        "a,"
+      ],
+      [
+        "wie",
+        "k"
+      ],
+      [
+        "▁co",
+        "prędzej"
+      ],
+      [
+        "▁sp",
+        "ych"
+      ],
+      [
+        "▁ci",
+        "szą"
+      ],
+      [
+        "▁„",
+        "że"
+      ],
+      [
+        "ana",
+        ";"
+      ],
+      [
+        "▁bu",
+        "ra"
+      ],
+      [
+        "▁tro",
+        "nu,"
+      ],
+      [
+        "▁także",
+        ".\n"
+      ],
+      [
+        "▁gru",
+        "z"
+      ],
+      [
+        "▁mówił",
+        "eś"
+      ],
+      [
+        "▁obraz",
+        "ek"
+      ],
+      [
+        "let",
+        "ni,"
+      ],
+      [
+        "▁4",
+        "9"
+      ],
+      [
+        "▁niebezpiecze",
+        "ństwem"
+      ],
+      [
+        "▁okrop",
+        "na"
+      ],
+      [
+        "▁dam",
+        "a,"
+      ],
+      [
+        "▁podzi",
+        "wiał"
+      ],
+      [
+        "▁koście",
+        "lne"
+      ],
+      [
+        "▁fa",
+        "lu"
+      ],
+      [
+        "gni",
+        "one"
+      ],
+      [
+        "Gdzie",
+        "ż"
+      ],
+      [
+        "▁mężczyz",
+        "ną"
+      ],
+      [
+        "▁Pawe",
+        "ł,"
+      ],
+      [
+        "▁pozwal",
+        "ając"
+      ],
+      [
+        "▁pierwo",
+        "tnie"
+      ],
+      [
+        "▁wymawi",
+        "ał"
+      ],
+      [
+        "▁najważ",
+        "niejsze"
       ]
     ]
   }

@@ -12,7 +12,7 @@ initial_alphabet = printable + "ąęćłńóśźżĄĘĆŁŃÓŚŹŻ"
 
 def train(corpus_path: str):
     trainer = trainers.BpeTrainer(
-        vocab_size=32000,
+        vocab_size=32768,
         special_tokens=["<PAD>", "<UNK>", "<BOS>", "<EOS>"],
         initial_alphabet=list(initial_alphabet)
     )

@@ -9,7 +9,7 @@ from custom_tokenizers.whitespace import WHITESPACE_TOKENIZER
 tokenizer = WHITESPACE_TOKENIZER
 
 def train(corpus_path: str):
-    trainer = trainers.WordLevelTrainer(vocab_size=32000, special_tokens=["<PAD>", "<UNK>", "<BOS>", "<EOS>"])
+    trainer = trainers.WordLevelTrainer(vocab_size=32768, special_tokens=["<PAD>", "<UNK>", "<BOS>", "<EOS>"])
     tokenizer.train_from_iterator(get_training_corpus(corpus_path), trainer=trainer)
     pretrained_tokenizer = PreTrainedTokenizerFast(
         tokenizer_object=tokenizer,

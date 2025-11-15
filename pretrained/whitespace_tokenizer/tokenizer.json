@@ -5,15 +5,6 @@
   "added_tokens": [
     {
       "id": 0,
-      "content": "<PAD>",
-      "single_word": false,
-      "lstrip": false,
-      "rstrip": false,
-      "normalized": false,
-      "special": true
-    },
-    {
-      "id": 1,
       "content": "<UNK>",
       "single_word": false,
       "lstrip": false,
@@ -22,8 +13,17 @@
       "special": true
     },
     {
-      "id": 2,
+      "id": 1,
       "content": "<BOS>",
+      "single_word": false,
+      "lstrip": false,
+      "rstrip": false,
+      "normalized": false,
+      "special": true
+    },
+    {
+      "id": 2,
+      "content": "<PAD>",
       "single_word": false,
       "lstrip": false,
       "rstrip": false,
@@ -113,9 +113,9 @@
   "model": {
     "type": "WordLevel",
     "vocab": {
-      "<PAD>": 0,
-      "<UNK>": 1,
-      "<BOS>": 2,
+      "<UNK>": 0,
+      "<BOS>": 1,
+      "<PAD>": 2,
       "<EOS>": 3,
       ",": 4,
       ".": 5,

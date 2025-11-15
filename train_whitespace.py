@@ -9,7 +9,7 @@ from custom_tokenizers.whitespace import WHITESPACE_TOKENIZER
 tokenizer = WHITESPACE_TOKENIZER
 
 def train(corpus_path: str):
-    trainer = trainers.WordLevelTrainer(vocab_size=32768, special_tokens=["<PAD>", "<UNK>", "<BOS>", "<EOS>"])
+    trainer = trainers.WordLevelTrainer(vocab_size=32768, special_tokens=["<UNK>", "<BOS>", "<PAD>", "<EOS>"])
     tokenizer.train_from_iterator(get_training_corpus(corpus_path), trainer=trainer)
     pretrained_tokenizer = PreTrainedTokenizerFast(
         tokenizer_object=tokenizer,
@@ -19,6 +19,9 @@ def train(corpus_path: str):
         unk_token="<UNK>"
     )
     pretrained_tokenizer.save_pretrained("pretrained/whitespace_tokenizer")
+
+    print(pretrained_tokenizer.encode("Zażółć gęślą jaźń.", add_special_tokens=True))
+    print(pretrained_tokenizer.decode(pretrained_tokenizer.encode("Zażółć gęślą jaźń.", add_special_tokens=True), skip_special_tokens=False))
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Train BPE tokenizer")

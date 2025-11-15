@@ -13,7 +13,7 @@ initial_alphabet = printable + "ąęćłńóśźżĄĘĆŁŃÓŚŹŻ"
 def train(corpus_path: str):
     trainer = trainers.BpeTrainer(
         vocab_size=32768,
-        special_tokens=["<PAD>", "<UNK>", "<BOS>", "<EOS>"],
+        special_tokens=["<UNK>", "<BOS>", "<PAD>", "<EOS>"],
         initial_alphabet=list(initial_alphabet)
     )
     tokenizer.train_from_iterator(get_training_corpus(corpus_path), trainer=trainer)
@@ -27,7 +27,8 @@ def train(corpus_path: str):
     # Let's follow the polish model names - there was "Bielik", "Sójka", let's have "Bocian" now
     pretrained_tokenizer.save_pretrained("pretrained/bocian_tokenizer")
 
-    print(pretrained_tokenizer.decode(pretrained_tokenizer.encode("Zażółć gęślą jaźń.")))
+    print(pretrained_tokenizer.encode("Zażółć gęślą jaźń.", add_special_tokens=True))
+    print(pretrained_tokenizer.decode(pretrained_tokenizer.encode("Zażółć gęślą jaźń.", add_special_tokens=True), skip_special_tokens=False))
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Train BPE tokenizer")

@@ -17,7 +17,13 @@ def train(corpus_path: str):
         initial_alphabet=list(initial_alphabet)
     )
     tokenizer.train_from_iterator(get_training_corpus(corpus_path), trainer=trainer)
-    pretrained_tokenizer = PreTrainedTokenizerFast(tokenizer_object=tokenizer)
+    pretrained_tokenizer = PreTrainedTokenizerFast(
+        tokenizer_object=tokenizer,
+        bos_token="<BOS>",
+        eos_token="<EOS>",
+        pad_token="<PAD>",
+        unk_token="<UNK>"
+    )
     # Let's follow the polish model names - there was "Bielik", "Sójka", let's have "Bocian" now
     pretrained_tokenizer.save_pretrained("pretrained/bocian_tokenizer")
 

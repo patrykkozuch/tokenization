@@ -11,7 +11,13 @@ tokenizer = WHITESPACE_TOKENIZER
 def train(corpus_path: str):
     trainer = trainers.WordLevelTrainer(vocab_size=32000, special_tokens=["<PAD>", "<UNK>", "<BOS>", "<EOS>"])
     tokenizer.train_from_iterator(get_training_corpus(corpus_path), trainer=trainer)
-    pretrained_tokenizer = PreTrainedTokenizerFast(tokenizer_object=tokenizer)
+    pretrained_tokenizer = PreTrainedTokenizerFast(
+        tokenizer_object=tokenizer,
+        bos_token="<BOS>",
+        eos_token="<EOS>",
+        pad_token="<PAD>",
+        unk_token="<UNK>"
+    )
     pretrained_tokenizer.save_pretrained("pretrained/whitespace_tokenizer")
 
 if __name__ == "__main__":

@@ -1,6 +1,6 @@
 import argparse
-from string import printable
-from tokenizers import trainers
+import string
+from tokenizers import trainers, processors, decoders
 from transformers import PreTrainedTokenizerFast
 
 from custom_tokenizers.bocian import BPE_TOKENIZER
@@ -8,15 +8,30 @@ from custom_tokenizers.corpus import get_training_corpus
 
 tokenizer = BPE_TOKENIZER
 
-initial_alphabet = printable + "ąęćłńóśźżĄĘĆŁŃÓŚŹŻ"
+initial_alphabet = string.printable + "ąęćłńóśźżĄĘĆŁŃÓŚŹŻ"
 
 def train(corpus_path: str):
     trainer = trainers.BpeTrainer(
         vocab_size=32768,
+        min_frequency=2,
         special_tokens=["<UNK>", "<BOS>", "<PAD>", "<EOS>"],
         initial_alphabet=list(initial_alphabet)
     )
     tokenizer.train_from_iterator(get_training_corpus(corpus_path), trainer=trainer)
+
+    bos_token_id = tokenizer.token_to_id("<BOS>")
+    eos_token_id = tokenizer.token_to_id("<EOS>")
+
+    tokenizer.post_processor = processors.TemplateProcessing(
+        single="<BOS>:0 $A:0 <EOS>:0",
+        pair="<BOS>:0 $A:0 <EOS>:0 $B:1 <EOS>:1",
+        special_tokens=[
+            ("<BOS>", bos_token_id), ("<EOS>", eos_token_id),
+        ],
+    )
+
+    tokenizer.decoder = decoders.Sequence([decoders.Metaspace(), decoders.ByteFallback()])
+
     pretrained_tokenizer = PreTrainedTokenizerFast(
         tokenizer_object=tokenizer,
         bos_token="<BOS>",

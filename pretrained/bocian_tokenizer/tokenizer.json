@@ -41,19 +41,7 @@
     }
   ],
   "normalizer": {
-    "type": "Sequence",
-    "normalizers": [
-      {
-        "type": "NFKC"
-      },
-      {
-        "type": "Replace",
-        "pattern": {
-          "Regex": " {2,}"
-        },
-        "content": " "
-      }
-    ]
+    "type": "NFKC"
   },
   "pre_tokenizer": {
     "type": "Metaspace",
@@ -103,6 +91,12 @@
         }
       },
       {
+        "SpecialToken": {
+          "id": "<BOS>",
+          "type_id": 1
+        }
+      },
+      {
         "Sequence": {
           "id": "B",
           "type_id": 1
@@ -146,7 +140,10 @@
         "split": true
       },
       {
-        "type": "ByteFallback"
+        "type": "Strip",
+        "content": " ",
+        "start": 0,
+        "stop": 0
       }
     ]
   },
@@ -157,7 +154,7 @@
     "continuing_subword_prefix": null,
     "end_of_word_suffix": null,
     "fuse_unk": true,
-    "byte_fallback": true,
+    "byte_fallback": false,
     "ignore_merges": false,
     "vocab": {
       "<UNK>": 0,

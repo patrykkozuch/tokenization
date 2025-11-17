@@ -3,17 +3,13 @@ from tokenizers import (
     normalizers,
     Tokenizer,
     pre_tokenizers,
+    decoders
 )
-from tokenizers.tokenizers import Regex
 
-tokenizer = Tokenizer(models.BPE(unk_token="<UNK>", dropout=0.1, fuse_unk=True, byte_fallback=True))
+tokenizer = Tokenizer(models.BPE(unk_token="<UNK>", dropout=0.1, fuse_unk=True))
 
-tokenizer.normalizer = normalizers.Sequence([
-    normalizers.NFKC(),  # Sentence-piece uses NFKC normalization
-    normalizers.Replace(Regex(" {2,}"), " "),
-])
-
+tokenizer.normalizer = normalizers.NFKC()
 tokenizer.pre_tokenizer = pre_tokenizers.Metaspace()
-
+tokenizer.decoder = decoders.Sequence([decoders.Metaspace(), decoders.Strip(" ", 1, 0)])
 
 BPE_TOKENIZER = tokenizer

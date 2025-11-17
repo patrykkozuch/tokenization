@@ -14,6 +14,7 @@ def train(corpus_path: str):
     trainer = trainers.BpeTrainer(
         vocab_size=32768,
         min_frequency=2,
+        limit_alphabet=1000,
         special_tokens=["<UNK>", "<BOS>", "<PAD>", "<EOS>"],
         initial_alphabet=list(initial_alphabet)
     )
@@ -24,20 +25,17 @@ def train(corpus_path: str):
 
     tokenizer.post_processor = processors.TemplateProcessing(
         single="<BOS>:0 $A:0 <EOS>:0",
-        pair="<BOS>:0 $A:0 <EOS>:0 $B:1 <EOS>:1",
-        special_tokens=[
-            ("<BOS>", bos_token_id), ("<EOS>", eos_token_id),
-        ],
+        pair="<BOS>:0 $A:0 <EOS>:0 <BOS>:1 $B:1 <EOS>:1",
+        special_tokens=[("<BOS>", bos_token_id), ("<EOS>", eos_token_id)],
     )
-
-    tokenizer.decoder = decoders.Sequence([decoders.Metaspace(), decoders.ByteFallback()])
 
     pretrained_tokenizer = PreTrainedTokenizerFast(
         tokenizer_object=tokenizer,
         bos_token="<BOS>",
         eos_token="<EOS>",
         pad_token="<PAD>",
-        unk_token="<UNK>"
+        unk_token="<UNK>",
+        padding_side="right"
     )
     # Let's follow the polish model names - there was "Bielik", "Sójka", let's have "Bocian" now
     pretrained_tokenizer.save_pretrained("pretrained/bocian_tokenizer")

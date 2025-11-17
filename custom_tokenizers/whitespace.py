@@ -13,11 +13,6 @@ tokenizer.normalizer = normalizers.Sequence([
     normalizers.Replace(Regex(" {2,}"), " "),
 ])
 
-tokenizer.pre_tokenizer = pre_tokenizers.Sequence(
-    [
-        pre_tokenizers.Whitespace(),
-        pre_tokenizers.Punctuation(),
-    ]
-)
+tokenizer.pre_tokenizer = pre_tokenizers.Whitespace()
 
 WHITESPACE_TOKENIZER = tokenizer

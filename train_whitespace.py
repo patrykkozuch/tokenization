@@ -1,19 +1,27 @@
 import argparse
 
-from tokenizers import trainers, processors
+from tokenizers import trainers, processors, Tokenizer, models, normalizers, Regex, pre_tokenizers
 from transformers import PreTrainedTokenizerFast
 
-from custom_tokenizers.corpus import get_training_corpus
-from custom_tokenizers.whitespace import WHITESPACE_TOKENIZER
+from corpus import get_training_corpus
 
-tokenizer = WHITESPACE_TOKENIZER
 
 def train(corpus_path: str):
+    tokenizer = Tokenizer(models.WordLevel(unk_token="<UNK>"))
+
+    tokenizer.normalizer = normalizers.Sequence([
+        normalizers.NFKC(),  # Sentence-piece uses NFKC normalization
+        normalizers.Replace(Regex(" {2,}"), " "),
+    ])
+
+    tokenizer.pre_tokenizer = pre_tokenizers.Whitespace()
+
     trainer = trainers.WordLevelTrainer(
         vocab_size=32768,
         min_frequency=5,
         special_tokens=["<UNK>", "<BOS>", "<PAD>", "<EOS>"]
     )
+
     tokenizer.train_from_iterator(get_training_corpus(corpus_path), trainer=trainer)
 
     bos_token_id = tokenizer.token_to_id("<BOS>")
@@ -38,7 +46,9 @@ def train(corpus_path: str):
     pretrained_tokenizer.save_pretrained("pretrained/whitespace_tokenizer")
 
     print(pretrained_tokenizer.encode("Zażółć gęślą jaźń.", add_special_tokens=True))
-    print(pretrained_tokenizer.decode(pretrained_tokenizer.encode("Zażółć gęślą jaźń.", add_special_tokens=True), skip_special_tokens=False))
+    print(pretrained_tokenizer.decode(pretrained_tokenizer.encode("Zażółć gęślą jaźń.", add_special_tokens=True),
+                                      skip_special_tokens=False))
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Train BPE tokenizer")

@@ -1,24 +1,23 @@
 import argparse
 import string
-from tokenizers import trainers, processors, decoders
+from tokenizers import processors
+from tokenizers.implementations import SentencePieceBPETokenizer
 from transformers import PreTrainedTokenizerFast
 
-from custom_tokenizers.bocian import BPE_TOKENIZER
-from custom_tokenizers.corpus import get_training_corpus
-
-tokenizer = BPE_TOKENIZER
+from corpus import get_training_corpus
 
 initial_alphabet = string.printable + "ąęćłńóśźżĄĘĆŁŃÓŚŹŻ"
 
+
 def train(corpus_path: str):
-    trainer = trainers.BpeTrainer(
+    tokenizer = SentencePieceBPETokenizer(unk_token="<UNK>", fuse_unk=True, dropout=0.1)
+    tokenizer.train_from_iterator(
+        get_training_corpus(corpus_path),
         vocab_size=32768,
         min_frequency=2,
-        limit_alphabet=1000,
         special_tokens=["<UNK>", "<BOS>", "<PAD>", "<EOS>"],
-        initial_alphabet=list(initial_alphabet)
+        initial_alphabet=list(initial_alphabet),
     )
-    tokenizer.train_from_iterator(get_training_corpus(corpus_path), trainer=trainer)
 
     bos_token_id = tokenizer.token_to_id("<BOS>")
     eos_token_id = tokenizer.token_to_id("<EOS>")
@@ -41,7 +40,9 @@ def train(corpus_path: str):
     pretrained_tokenizer.save_pretrained("pretrained/bocian_tokenizer")
 
     print(pretrained_tokenizer.encode("Zażółć gęślą jaźń.", add_special_tokens=True))
-    print(pretrained_tokenizer.decode(pretrained_tokenizer.encode("Zażółć gęślą jaźń.", add_special_tokens=True), skip_special_tokens=False))
+    print(pretrained_tokenizer.decode(pretrained_tokenizer.encode("Zażółć gęślą jaźń.", add_special_tokens=True),
+                                      skip_special_tokens=False))
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Train BPE tokenizer")

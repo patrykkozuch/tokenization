@@ -1,24 +1,20 @@
 import argparse
-import string
 from tokenizers import processors, Tokenizer, normalizers, pre_tokenizers, decoders
-from tokenizers.implementations import SentencePieceBPETokenizer
 from tokenizers.models import BPE
 from tokenizers.trainers import BpeTrainer
 from transformers import PreTrainedTokenizerFast
 
 from corpus import get_training_corpus
 
-initial_alphabet = string.printable + "ąęćłńóśźżĄĘĆŁŃÓŚŹŻ"
-
 
 def train(corpus_path: str):
-    tokenizer = Tokenizer(BPE(dropout=0.1))
-    tokenizer.normalizer = normalizers.NFKC()
-    tokenizer.pre_tokenizer = pre_tokenizers.ByteLevel()
+    tokenizer = Tokenizer(BPE(unk_token="<UNK>"))
+    tokenizer.normalizer = normalizers.NFC()
+    tokenizer.pre_tokenizer = pre_tokenizers.ByteLevel(add_prefix_space=False)
 
     trainer = BpeTrainer(
         vocab_size=32768,
-        min_frequency=2,
+        min_frequency=100,
         special_tokens=["<UNK>", "<BOS>", "<PAD>", "<EOS>"]
     )
     tokenizer.train_from_iterator(get_training_corpus(corpus_path), trainer=trainer)

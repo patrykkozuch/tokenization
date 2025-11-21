@@ -9,16 +9,12 @@ from corpus import get_training_corpus
 def train(corpus_path: str):
     tokenizer = Tokenizer(models.WordLevel(unk_token="<UNK>"))
 
-    tokenizer.normalizer = normalizers.Sequence([
-        normalizers.NFKC(),  # Sentence-piece uses NFKC normalization
-        normalizers.Replace(Regex(" {2,}"), " "),
-    ])
-
-    tokenizer.pre_tokenizer = pre_tokenizers.Whitespace()
+    tokenizer.normalizer = normalizers.NFC()
+    tokenizer.pre_tokenizer = pre_tokenizers.Whitespace() # Splits on whitespace and punctuation
 
     trainer = trainers.WordLevelTrainer(
         vocab_size=32768,
-        min_frequency=5,
+        min_frequency=100,
         special_tokens=["<UNK>", "<BOS>", "<PAD>", "<EOS>"]
     )
 
@@ -29,7 +25,7 @@ def train(corpus_path: str):
 
     tokenizer.post_processor = processors.TemplateProcessing(
         single="<BOS>:0 $A:0 <EOS>:0",
-        pair="<BOS>:0 $A:0 <EOS>:0 $B:1 <EOS>:1",
+        pair="<BOS>:0 $A:0 <EOS>:0 <BOS>:1 $B:1 <EOS>:1",
         special_tokens=[
             ("<BOS>", bos_token_id), ("<EOS>", eos_token_id),
         ],
